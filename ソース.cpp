@@ -1,5 +1,5 @@
 //------------------------------------------------
-// �w�b�_�[���C���N���[�h
+// ヘッダーをインクルード
 //------------------------------------------------
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,10 +7,10 @@
 #include <conio.h>
 #include <string.h>
 #include <vector>
-#include<windows.h>
+#include <windows.h>
 
 //------------------------------------------------
-// �񋓒萔�̐錾
+// 列挙定数の宣言
 //------------------------------------------------
 enum
 {
@@ -34,7 +34,7 @@ enum
 };
 
 //------------------------------------------------
-// �\���̂̐錾
+// 構造体の宣言
 //------------------------------------------------
 typedef struct
 {
@@ -53,110 +53,110 @@ typedef struct
 }Stage;
 
 //------------------------------------------------
-// �O���[�o���ϐ��̐錾
+// グローバル変数の宣言
 //------------------------------------------------
 const std::string stage_name[STAGE_MAX] = {
-	"�r�s�`�f�d�O�P",
-	"�r�s�`�f�d�O�Q",
-	"�r�s�`�f�d�O�R",
-	"�r�s�`�f�d�O�S",
-	"�r�s�`�f�d�O�T",
-	"�r�s�`�f�d�O�U",
-	"�r�s�`�f�d�O�V",
-	"�d�w�h�s"
+	"ＳＴＡＧＥ０１",
+	"ＳＴＡＧＥ０２",
+	"ＳＴＡＧＥ０３",
+	"ＳＴＡＧＥ０４",
+	"ＳＴＡＧＥ０５",
+	"ＳＴＡＧＥ０６",
+	"ＳＴＡＧＥ０７",
+	"ＥＸＩＴ"
 };
 
 const Stage stage[STAGE_MAX] = {
 	{
-		STAGE1,			//�X�e�[�W�ԍ� int stage_num;
-		6,				//�X�e�[�W�T�C�Y int stage_size;
-		{{"�P", "�P", "�P", "�O", "�O", "�O"},
-		 {"�P", "�X", "�R", "�Q", "�P", "�O"},
-		 {"�P", "�Q", "�X", "�X", "�Q", "�P"},
-		 {"�P", "�Q", "�R", "�R", "�X", "�P"},
-		 {"�P", "�X", "�P", "�P", "�P", "�P"},	//�X�e�[�W�}�b�v�@std::vector<std::vector<std::string>> stage_map;
-		 {"�P", "�P", "�P", "�O", "�O", "�O"}}	//"�X"���n���A�����͔����ɂ���n���̐�
+		STAGE1,			//ステージ番号 int stage_num;
+		6,				//ステージサイズ int stage_size;
+		{{"１", "１", "１", "０", "０", "０"},
+		 {"１", "９", "３", "２", "１", "０"},
+		 {"１", "２", "９", "９", "２", "１"},
+		 {"１", "２", "３", "３", "９", "１"},
+		 {"１", "９", "１", "１", "１", "１"},	//ステージマップ　std::vector<std::vector<std::string>> stage_map;
+		 {"１", "１", "１", "０", "０", "０"}}	//"９"が地雷、数字は八方にある地雷の数
 	},
 	{
-		STAGE2,			//�X�e�[�W�ԍ� int stage_num;
-		6,				//�X�e�[�W�T�C�Y int stage_size;
-		{{"�O", "�O", "�P", "�P", "�P", "�P"},
-		 {"�P", "�P", "�Q", "�X", "�P", "�O"},
-		 {"�Q", "�X", "�S", "�Q", "�Q", "�O"},
-		 {"�Q", "�X", "�S", "�X", "�P", "�O"},
-		 {"�P", "�Q", "�X", "�Q", "�P", "�O"},	//"�X"���n���A�����͔����ɂ���n���̐�
-		 {"�O", "�P", "�P", "�P", "�O", "�O"},}	//�X�e�[�W�}�b�v�@std::vector<std::vector<std::string>> stage_map;
+		STAGE2,			//ステージ番号 int stage_num;
+		6,				//ステージサイズ int stage_size;
+		{{"０", "０", "１", "１", "１", "１"},
+		 {"１", "１", "２", "９", "１", "０"},
+		 {"２", "９", "４", "２", "２", "０"},
+		 {"２", "９", "４", "９", "１", "０"},
+		 {"１", "２", "９", "２", "１", "０"},	//"９"が地雷、数字は八方にある地雷の数
+		 {"０", "１", "１", "１", "０", "０"},}	//ステージマップ　std::vector<std::vector<std::string>> stage_map;
 	},
 	{
-		STAGE3,			//�X�e�[�W�ԍ� int stage_num;
-		7,				//�X�e�[�W�T�C�Y int stage_size;
-		{{"�O", "�O", "�O", "�O", "�O", "�O", "�O"},
-		 {"�O", "�P", "�Q", "�Q", "�P", "�O", "�O"},
-		 {"�O", "�P", "�X", "�X", "�Q", "�P", "�P"},
-		 {"�P", "�Q", "�R", "�R", "�R", "�X", "�P"},
-		 {"�P", "�X", "�Q", "�Q", "�X", "�Q", "�P"},
-		 {"�P", "�Q", "�X", "�Q", "�P", "�P", "�O"},	//"�X"���n���A�����͔����ɂ���n���̐�
-		 {"�O", "�P", "�P", "�P", "�O", "�O", "�O"},}	//�X�e�[�W�}�b�v�@std::vector<std::vector<std::string>> stage_map;
+		STAGE3,			//ステージ番号 int stage_num;
+		7,				//ステージサイズ int stage_size;
+		{{"０", "０", "０", "０", "０", "０", "０"},
+		 {"０", "１", "２", "２", "１", "０", "０"},
+		 {"０", "１", "９", "９", "２", "１", "１"},
+		 {"１", "２", "３", "３", "３", "９", "１"},
+		 {"１", "９", "２", "２", "９", "２", "１"},
+		 {"１", "２", "９", "２", "１", "１", "０"},	//"９"が地雷、数字は八方にある地雷の数
+		 {"０", "１", "１", "１", "０", "０", "０"},}	//ステージマップ　std::vector<std::vector<std::string>> stage_map;
 	},
 	{
-		STAGE4,			//�X�e�[�W�ԍ� int stage_num;
-		8,				//�X�e�[�W�T�C�Y int stage_size;
-		{{"�O", "�O", "�O", "�P", "�P", "�P", "�O", "�O"},
-		 {"�O", "�P", "�P", "�Q", "�X", "�Q", "�P", "�O"},
-		 {"�P", "�Q", "�X", "�R", "�S", "�X", "�Q", "�O"},	
-		 {"�P", "�X", "�R", "�X", "�R", "�X", "�Q", "�O"},
-		 {"�P", "�Q", "�R", "�Q", "�R", "�Q", "�Q", "�O"},
-		 {"�O", "�P", "�X", "�Q", "�Q", "�X", "�Q", "�P"},
-		 {"�O", "�P", "�Q", "�X", "�Q", "�Q", "�X", "�P"},	//"�X"���n���A"�X"�ȊO�̐����͔����ɂ���n���̐�
-		 {"�O", "�O", "�P", "�P", "�P", "�P", "�P", "�P"}}	//�X�e�[�W�}�b�v�@std::vector<std::vector<std::string>> stage_map;
+		STAGE4,			//ステージ番号 int stage_num;
+		8,				//ステージサイズ int stage_size;
+		{{"０", "０", "０", "１", "１", "１", "０", "０"},
+		 {"０", "１", "１", "２", "９", "２", "１", "０"},
+		 {"１", "２", "９", "３", "４", "９", "２", "０"},	
+		 {"１", "９", "３", "９", "３", "９", "２", "０"},
+		 {"１", "２", "３", "２", "３", "２", "２", "０"},
+		 {"０", "１", "９", "２", "２", "９", "２", "１"},
+		 {"０", "１", "２", "９", "２", "２", "９", "１"},	//"９"が地雷、"９"以外の数字は八方にある地雷の数
+		 {"０", "０", "１", "１", "１", "１", "１", "１"}}	//ステージマップ　std::vector<std::vector<std::string>> stage_map;
 	},
 	{
-		STAGE5,			//�X�e�[�W�ԍ� int stage_num;
-		8,				//�X�e�[�W�T�C�Y int stage_size;
-		{{"�P", "�P", "�P", "�O", "�O", "�P", "�P", "�P"},
-		 {"�P", "�X", "�Q", "�P", "�O", "�P", "�X", "�P"},
-		 {"�P", "�Q", "�X", "�Q", "�Q", "�S", "�R", "�Q"},	
-		 {"�P", "�Q", "�Q", "�Q", "�X", "�X", "�X", "�P"},
-		 {"�P", "�X", "�Q", "�Q", "�R", "�R", "�Q", "�P"},
-		 {"�P", "�Q", "�R", "�X", "�P", "�O", "�O", "�O"},
-		 {"�O", "�P", "�X", "�Q", "�P", "�O", "�O", "�O"},	//"�X"���n���A�����͔����ɂ���n���̐�
-		 {"�O", "�P", "�P", "�P", "�O", "�O", "�O", "�O"}}	//�X�e�[�W�}�b�v�@std::vector<std::vector<std::string>> stage_map;
+		STAGE5,			//ステージ番号 int stage_num;
+		8,				//ステージサイズ int stage_size;
+		{{"１", "１", "１", "０", "０", "１", "１", "１"},
+		 {"１", "９", "２", "１", "０", "１", "９", "１"},
+		 {"１", "２", "９", "２", "２", "４", "３", "２"},	
+		 {"１", "２", "２", "２", "９", "９", "９", "１"},
+		 {"１", "９", "２", "２", "３", "３", "２", "１"},
+		 {"１", "２", "３", "９", "１", "０", "０", "０"},
+		 {"０", "１", "９", "２", "１", "０", "０", "０"},	//"９"が地雷、数字は八方にある地雷の数
+		 {"０", "１", "１", "１", "０", "０", "０", "０"}}	//ステージマップ　std::vector<std::vector<std::string>> stage_map;
 	},
 	{
-		STAGE6,			//�X�e�[�W�ԍ� int stage_num;
-		9,				//�X�e�[�W�T�C�Y int stage_size;
-		{{"�O", "�O", "�O", "�O", "�O", "�O", "�O", "�O", "�O"},
-		 {"�P", "�P", "�P", "�P", "�P", "�P", "�O", "�O", "�O"},
-		 {"�P", "�X", "�Q", "�Q", "�X", "�Q", "�P", "�P", "�O"},	//"�X"���n���A�����͔����ɂ���n���̐�
-		 {"�P", "�Q", "�R", "�X", "�Q", "�Q", "�X", "�P", "�O"},
-		 {"�O", "�P", "�X", "�R", "�R", "�R", "�Q", "�P", "�O"},
-		 {"�O", "�P", "�P", "�Q", "�X", "�X", "�Q", "�P", "�O"},
-		 {"�P", "�P", "�Q", "�Q", "�R", "�R", "�X", "�Q", "�P"},
-		 {"�P", "�X", "�Q", "�X", "�P", "�P", "�Q", "�X", "�P"},
-		 {"�P", "�P", "�Q", "�P", "�P", "�O", "�P", "�P", "�P"}}	//�X�e�[�W�}�b�v�@std::vector<std::vector<std::string>> stage_map;
+		STAGE6,			//ステージ番号 int stage_num;
+		9,				//ステージサイズ int stage_size;
+		{{"０", "０", "０", "０", "０", "０", "０", "０", "０"},
+		 {"１", "１", "１", "１", "１", "１", "０", "０", "０"},
+		 {"１", "９", "２", "２", "９", "２", "１", "１", "０"},	//"９"が地雷、数字は八方にある地雷の数
+		 {"１", "２", "３", "９", "２", "２", "９", "１", "０"},
+		 {"０", "１", "９", "３", "３", "３", "２", "１", "０"},
+		 {"０", "１", "１", "２", "９", "９", "２", "１", "０"},
+		 {"１", "１", "２", "２", "３", "３", "９", "２", "１"},
+		 {"１", "９", "２", "９", "１", "１", "２", "９", "１"},
+		 {"１", "１", "２", "１", "１", "０", "１", "１", "１"}}	//ステージマップ　std::vector<std::vector<std::string>> stage_map;
 	},
 	{
-		STAGE7,			//�X�e�[�W�ԍ� int stage_num;
-		10,				//�X�e�[�W�T�C�Y int stage_size;
-		{{"�O", "�O", "�O", "�O", "�O", "�O", "�O", "�O", "�O", "�O"},
-		 {"�O", "�O", "�O", "�O", "�O", "�O", "�P", "�P", "�P", "�O"},
-		 {"�O", "�O", "�P", "�Q", "�R", "�Q", "�Q", "�X", "�P", "�O"},	//"�X"���n���A�����͔����ɂ���n���̐�
-		 {"�O", "�O", "�Q", "�X", "�X", "�X", "�Q", "�P", "�P", "�O"},
-		 {"�O", "�O", "�R", "�X", "�T", "�Q", "�Q", "�P", "�P", "�O"},
-		 {"�P", "�P", "�R", "�X", "�R", "�P", "�Q", "�X", "�P", "�O"},
-		 {"�P", "�X", "�R", "�Q", "�R", "�X", "�R", "�Q", "�P", "�O"},
-		 {"�P", "�Q", "�R", "�X", "�Q", "�Q", "�X", "�Q", "�P", "�O"},
-		 {"�O", "�P", "�X", "�Q", "�P", "�P", "�Q", "�X", "�P", "�O"},
-		 {"�O", "�P", "�P", "�P", "�O", "�O", "�P", "�P", "�P", "�O"}}	//�X�e�[�W�}�b�v�@std::vector<std::vector<std::string>> stage_map;
+		STAGE7,			//ステージ番号 int stage_num;
+		10,				//ステージサイズ int stage_size;
+		{{"０", "０", "０", "０", "０", "０", "０", "０", "０", "０"},
+		 {"０", "０", "０", "０", "０", "０", "１", "１", "１", "０"},
+		 {"０", "０", "１", "２", "３", "２", "２", "９", "１", "０"},	//"９"が地雷、数字は八方にある地雷の数
+		 {"０", "０", "２", "９", "９", "９", "２", "１", "１", "０"},
+		 {"０", "０", "３", "９", "５", "２", "２", "１", "１", "０"},
+		 {"１", "１", "３", "９", "３", "１", "２", "９", "１", "０"},
+		 {"１", "９", "３", "２", "３", "９", "３", "２", "１", "０"},
+		 {"１", "２", "３", "９", "２", "２", "９", "２", "１", "０"},
+		 {"０", "１", "９", "２", "１", "１", "２", "９", "１", "０"},
+		 {"０", "１", "１", "１", "０", "０", "１", "１", "１", "０"}}	//ステージマップ　std::vector<std::vector<std::string>> stage_map;
 	},
 	{
-		//�_�~�[�X�e�[�W
-		EXIT,			//�X�e�[�W�ԍ� int stage_num;
-		4,				//�X�e�[�W�T�C�Y int stage_size;
-		{{"�O", "�P", "�P", "�P"},
-		 {"�P", "�Q", "�X", "�P"},
-		 {"�P", "�X", "�Q", "�P"},
-		 {"�P", "�P", "�P", "�O"}}	//�X�e�[�W�}�b�v�@std::vector<std::vector<std::string>> stage_map;
+		//ダミーステージ
+		EXIT,			//ステージ番号 int stage_num;
+		4,				//ステージサイズ int stage_size;
+		{{"０", "１", "１", "１"},
+		 {"１", "２", "９", "１"},
+		 {"１", "９", "２", "１"},
+		 {"１", "１", "１", "０"}}	//ステージマップ　std::vector<std::vector<std::string>> stage_map;
 	}
 };
 
@@ -165,89 +165,89 @@ Player player = {
 };
 
 //------------------------------------------------
-// �֐��̐錾
+// 関数の宣言
 //------------------------------------------------
 
-//�^�C�g����ʂ�`�悷��֐�
+//タイトル画面を描画する関数
 void title()
 {
 	std::system("cls");
 	std::cout << std::endl;
-	std::cout << "�@�_�b�n���𓥂񂶂Ⴂ���Ȃ��Q�[���b�^" << std::endl;
+	std::cout << "　＼｜地雷を踏んじゃいけないゲーム｜／" << std::endl;
 	std::cout << std::endl;
-	std::cout << "�@�o���������@�`�����@�a�����������I�I" << std::endl;;
+	std::cout << "　Ｐｒｅｓｓ　Ａｎｙ　Ｂｏｔｔｏｎ！！" << std::endl;;
 
-	//���͂�҂�
+	//入力を待つ
 	_getch();
 }
 
-//�X�e�[�W�I����ʂ�`�悷��֐�
+//ステージ選択画面を描画する関数
 void select_stage()
 {
-	//���[�v������
+	//ループさせる
 	while (1)
 	{
-		//��ʂ��N���A�ɂ���
+		//画面をクリアにする
 		std::system("cls");
 
 		player.stage_num = (STAGE_MAX + player.stage_num) % STAGE_MAX;
 
-		// �X�e�[�W�̈ꗗ��\������
+		// ステージの一覧を表示する
 		for (int i = 0; i < STAGE_MAX; i++)
 		{
-			if (player.stage_num == i) std::cout << "��";
-			else std::cout << "�@";
+			if (player.stage_num == i) std::cout << "＞";
+			else std::cout << "　";
 			std::cout << stage_name[i] << std::endl;
 		}
 
-		//������@�̕\��
+		//操作方法の表示
 		std::cout << std::endl;
-		std::cout << "�@���L�[�ŏ㉺�ړ�" << std::endl;
-		std::cout << "�@�d�m�s�d�q�Ł@����" << std::endl;
+		std::cout << "　矢印キーで上下移動" << std::endl;
+		std::cout << "　ＥＮＴＥＲで　決定" << std::endl;
 
-		//�����̓��͂ɑ΂��ăX�e�[�W�ԍ����グ��������
+		//↑↓の入力に対してステージ番号を上げ下げする
 		switch (_getch())
 		{
 		case 0xe0:
 			switch (_getch())
 			{
-			//���̓��͂̂Ƃ��O�̃X�e�[�W�ԍ��ɂ���
+			//↑の入力のとき前のステージ番号にする
 			case 0x48:
 				player.stage_num--;
 				break;
-			//���̓��͂̂Ƃ����̃X�e�[�W�ԍ��ɂ���
+			//↓の入力のとき次のステージ番号にする
 			case 0x50: 
 				player.stage_num++;
 				break;
 			}
 			break;
-		//Enter���͂Ń��[�v�𔲂���
+		//Enter入力でループを抜ける
 		case 0x0d:
 			return;
 		}
 	}
 }
 
-//�I�����ꂽ�X�e�[�W�ŏ���������֐�
+//選択されたステージで初期化する関数
 void ini_stage_map()
 {
-	//�v���C���[�̃X�e�[�W�T�C�Y�ɑI�����ꂽ�X�e�[�W�T�C�Y����
+	//プレイヤーのステージサイズに選択されたステージサイズを代入
 	player.stage_size = stage[player.stage_num].stage_size;
 
-	//�v���C���[�̃X�e�[�W�J�[�\���̏�����
+	//プレイヤーのステージカーソルの初期化
 	player.stage_cursor[0] = 0;
 	player.stage_cursor[1] = 0;
 
-	//�v���C���[�̃X�e�[�W�}�b�v�̏�����
+	//プレイヤーのステージマップの初期化
 	std::vector<int> vec(player.stage_size, CLOSED);
 	std::vector<std::vector<int>> matrix(player.stage_size, vec);
 	player.stage_map = matrix;
 }
 
-//�X�e�[�W��`�悷��֐�
+//ステージを描画する関数
 void draw_stage()
 {
-	//�v���C���[�X�e�[�W�}�b�v�̏��(CLOSED, OPEN, etc..)�ɉ����ĉ�ʂ�`�悷��
+	//プレイヤーステージマップの状態(CLOSED, OPEN, etc..)に応じて画面を描画する
 	for (int i = 0; i < player.stage_size; i++)
 	{
 		for (int j = 0; j < player.stage_size; j++)
@@ -255,36 +255,36 @@ void draw_stage()
 			switch (player.stage_map.at(i).at(j))
 			{
 			case CLOSED:
-				std::cout << "��";
+				std::cout << "□";
 				break;
 			case OPEN:
 				std::cout << stage[player.stage_num].stage_map.at(i).at(j);
 				break;
 			case FLAG:
-				std::cout << "�~";
+				std::cout << "×";
 				break;
 			case CURSOR:
-				std::cout << "��";
+				std::cout << "■";
 				break;
 			}
 		}
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
-	std::cout << "���@�@�@�@�Ł@�ړ�" << std::endl;
-	std::cout << "���@�@�@�@�@�Ł@����" << std::endl;
-	std::cout << "���@�@�@�@�@�Ł@�ڈ��u��" << std::endl;
-	std::cout << "�d�m�s�d�q�@�Ł@�X�e�[�W�I���ɖ߂�" << std::endl;
+	std::cout << "矢印　　　　で　移動" << std::endl;
+	std::cout << "ｄ　　　　　で　踏む" << std::endl;
+	std::cout << "ｆ　　　　　で　目印を置く" << std::endl;
+	std::cout << "ＥＮＴＥＲ　で　ステージ選択に戻る" << std::endl;
 }
 
-//�n���𓥂�ł��邩���肷��֐�
+//地雷を踏んでいるか判定する関数
 bool judge_mine()
 {
 	for (int i = 0; i < player.stage_size; i++)
 	{
 		for (int j = 0; j < player.stage_size; j++)
 		{
-			if (player.stage_map.at(i).at(j) == OPEN && stage[player.stage_num].stage_map.at(i).at(j) == "�X")
+			if (player.stage_map.at(i).at(j) == OPEN && stage[player.stage_num].stage_map.at(i).at(j) == "９")
 			{
 				return true;
 			}
@@ -293,14 +293,14 @@ bool judge_mine()
 	return false;
 }
 
-//�n���ȊO��S�ĊJ���Ă��邩���肷��֐�
+//地雷以外を全て開けているか判定する関数
 bool judge_success()
 {
 	for (int i = 0; i < player.stage_size; i++)
 	{
 		for (int j = 0; j < player.stage_size; j++)
 		{
-			if (player.stage_map.at(i).at(j) == CLOSED && stage[player.stage_num].stage_map.at(i).at(j) != "�X")
+			if (player.stage_map.at(i).at(j) == CLOSED && stage[player.stage_num].stage_map.at(i).at(j) != "９")
 			{
 				return false;
 			}
@@ -309,64 +309,64 @@ bool judge_success()
 	return true;
 }
 
-//�X�e�[�W����������֐�
+//ステージを処理する関数
 void mode_stage()
 {
 	while (1)
 	{
-		//��ʂ��N���A�ɂ���
+		//画面をクリアにする
 		std::system("cls");
 
-		//�J�[�\�����X�e�[�W�T�C�Y�𒴂��Ȃ��悤�ɂ���
+		//カーソルがステージサイズを超えないようにする
 		player.stage_cursor[0] = (player.stage_size + player.stage_cursor[0]) % player.stage_size;
 		player.stage_cursor[1] = (player.stage_size + player.stage_cursor[1]) % player.stage_size;
 
-		//�J�[�\���̏�Ԃ�ێ�����ϐ�
+		//カーソルの状態を保持する変数
 		int cursol_state = player.stage_map.at(player.stage_cursor[0]).at(player.stage_cursor[1]);
 
-		//�v���C���[�J�[�\���̍��W��CURSOL�ɂ���
+		//プレイヤーカーソルの座標をCURSOLにする
 		player.stage_map.at(player.stage_cursor[0]).at(player.stage_cursor[1]) = CURSOR;
 
-		//�X�e�[�W��`�悷��֐����Ăяo��
+		//ステージを描画する関数を呼び出す
 		draw_stage();
 		
 
-		//���͂��󂯂ăJ�[�\���𓮂��������Ԃ�ς����肷��
+		//入力を受けてカーソルを動かしたり状態を変えたりする
 		switch (_getch())
 		{
 		case 0xe0:
 			switch (_getch())
 			{
-				//���̓��͂̂Ƃ��J�[�\������ɓ�����
+				//↑の入力のときカーソルを上に動かす
 			case 0x48:
 				player.stage_map.at(player.stage_cursor[0]).at(player.stage_cursor[1]) = cursol_state;
 				player.stage_cursor[0]--;
 				break;
-				//���̓��͂̂Ƃ��J�[�\�������ɓ�����
+				//↓の入力のときカーソルを下に動かす
 			case 0x50:
 				player.stage_map.at(player.stage_cursor[0]).at(player.stage_cursor[1]) = cursol_state;
 				player.stage_cursor[0]++;
 				break;
-				//���̓��͂̂Ƃ��J�[�\�������ɓ�����
+				//←の入力のときカーソルを左に動かす
 			case 0x4b:
 				player.stage_map.at(player.stage_cursor[0]).at(player.stage_cursor[1]) = cursol_state;
 				player.stage_cursor[1]--;
 				break;
-				//���̓��͂̉����J�[�\�����E�ɓ�����
+				//→の入力の解きカーソルを右に動かす
 			case 0x4d:
 				player.stage_map.at(player.stage_cursor[0]).at(player.stage_cursor[1]) = cursol_state;
 				player.stage_cursor[1]++;
 				break;
 			}
 			break;
-		//Enter���͂Ń��[�v�𔲂���
+		//Enter入力でループを抜ける
 		case 0x0d:
 			return;
-		//��Ԃ�OPEM�ɕς���
+		//状態をOPEMに変える
 		case 'd':
 			player.stage_map.at(player.stage_cursor[0]).at(player.stage_cursor[1]) = OPEN;
 			break;
-		//��Ԃ�CLOSED�Ȃ�FLAG��u���BFLAG���u���Ă���Ȃ�CLOSED�ɂ���
+		//状態がCLOSEDならFLAGを置く。FLAGが置いてあるならCLOSEDにする
 		case 'f':
 			switch (cursol_state)
 			{
@@ -392,53 +392,53 @@ void mode_stage()
 	{
 		std::system("cls");
 		std::cout << std::endl;
-		std::cout << "�@�@�`���h�[�[�[�[���I�I�I" << std::endl;
+		std::cout << "　　チュドーーーーン！！！" << std::endl;
 		_getch();
 	}
 	if (judge_success())
 	{
 		std::system("cls");
 		std::cout << std::endl;
-		std::cout << "�@�@�n�����܂Ȃ������I�I�I" << std::endl;
+		std::cout << "　　地雷踏まなかった！！！" << std::endl;
 		_getch();
 	}
 }
 
-//�G���f�B���O��`�悷��֐�
+//エンディングを描画する関数
 void draw_ending()
 {
 	std::system("cls");
 	std::cout << std::endl;
-	std::cout << "�@�@�^�b���Z�����͂����܂��I�I�I�b�_" << std::endl;
+	std::cout << "　　／｜お兄ちゃんはおしまい！！！｜＼" << std::endl;
 	std::cout << std::endl;
-	std::cout << "�@�@�@�@�@�@�@�@�@�@����F���c��@�F��" << std::endl;
+	std::cout << "　　　　　　　　　　制作：隅田川　芳雪" << std::endl;
 	Sleep(2000);
 }
 
 //------------------------------------------------
-// main�֐��̐錾
+// main関数の宣言
 //------------------------------------------------
 int main()
 {
-	//�^�C�g����`�悷��֐����Ăяo��
+	//タイトルを描画する関数を呼び出す
 	title();
 
-	//���[�v����
+	//ループする
 	while (1)
 	{
-		//�X�e�[�W�I����ʂ�\������֐����Ăяo��
+		//ステージ選択画面を表示する関数を呼び出す
 		select_stage();
 
-		//EXIT��I��������Q�[�����I������
+		//EXITを選択したらゲームを終了する
 		if (player.stage_num == EXIT) break;
 		
-		//�v���C���[�̃X�e�[�W�}�b�v������������֐����Ăяo���B
+		//プレイヤーのステージマップを初期化する関数を呼び出す。
 		ini_stage_map();
 
-		//�X�e�[�W��`�悷��֐����Ăяo��
+		//ステージを描画する関数を呼び出す
 		mode_stage();
 	}
-	//�G���f�B���O��`�悷��֐����Ăяo��
+	//エンディングを描画する関数を呼び出す
 	draw_ending();
 }
 
